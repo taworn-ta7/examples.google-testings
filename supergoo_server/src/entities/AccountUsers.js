@@ -19,16 +19,6 @@ module.exports = db.define('AccountUsers', {
 		},
 	},
 
-	// role
-	role: {
-		type: DataTypes.STRING(50),
-		allowNull: false,
-		defaultValue: 'user',
-		validate: {
-			isIn: [['user', 'admin']],
-		},
-	},
-
 	// ----------------------------------------------------------------------
 
 	// display name
@@ -64,18 +54,11 @@ module.exports = db.define('AccountUsers', {
 
 	// ----------------------------------------------------------------------
 
-	// disabled by admin or not
-	disabled: {
-		type: DataTypes.DATE,
+	// access token
+	accessToken: {
+		type: DataTypes.STRING(1024),
 		allowNull: true,
-		defaultValue: null,
-	},
-
-	// resigned by user or not
-	resigned: {
-		type: DataTypes.DATE,
-		allowNull: true,
-		defaultValue: null,
+		field: 'access_token',
 	},
 
 	// ----------------------------------------------------------------------

@@ -12,17 +12,18 @@ module.exports = db.define('AccountTokens', {
 	// ----------------------------------------------------------------------
 
 	// encrypted password
-	salt: {
-		type: DataTypes.STRING,
-		allowNull: false,
-	},
-	hash: {
-		type: DataTypes.STRING(1024),
-		allowNull: false,
-	},
 	token: {
+		type: DataTypes.STRING(4096),
+		allowNull: true,
+	},
+
+	// ----------------------------------------------------------------------
+
+	// refresh token
+	refreshToken: {
 		type: DataTypes.STRING(1024),
 		allowNull: true,
+		field: 'refresh_token',
 	},
 }, {
 	name: {

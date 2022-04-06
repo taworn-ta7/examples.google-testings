@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import SignInGooglePage from './pages/signin/SignInGooglePage';
 import ChangeIconPage from './pages/profile/ChangeIconPage';
 import ChangeNamePage from './pages/profile/ChangeNamePage';
+import DrivePage from './pages/DrivePage';
 import SettingsPage from './pages/SettingsPage';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
 											<Route path="change-icon" element={<AuthenRequired><ChangeIconPage /></AuthenRequired>} />
 											<Route path="change-name" element={<AuthenRequired><ChangeNamePage /></AuthenRequired>} />
 										</Route>
+										<Route path="drive" element={<AuthenRequired><DrivePage /></AuthenRequired>} />
 										<Route path="settings" element={<AuthenRequired><SettingsPage /></AuthenRequired>} />
 									</Routes>
 								</BrowserRouter>

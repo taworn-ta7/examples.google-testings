@@ -24,6 +24,7 @@ import {
 	Google as MainIcon,
 	Search as SearchIcon,
 	Home as HomeIcon,
+	AddToDrive as DriveIcon,
 	Settings as SettingsIcon,
 	Face as FaceIcon,
 	DriveFileRenameOutline as NameIcon,
@@ -116,6 +117,9 @@ export default function PageHeader(props) {
 			switch (menu) {
 				case 'home':
 					navigate('/');
+					break;
+				case 'drive':
+					navigate('/drive');
 					break;
 				case 'settings':
 					navigate('/settings');
@@ -217,6 +221,10 @@ export default function PageHeader(props) {
 								<MenuItem onClick={(event) => handleMenu(event, 'home')}>
 									<ListItemIcon><HomeIcon /></ListItemIcon>
 									<ListItemText primary={t('drawerUi.home')} />
+								</MenuItem>
+								<MenuItem onClick={(event) => handleMenu(event, 'drive')}>
+									<ListItemIcon><DriveIcon /></ListItemIcon>
+									<ListItemText primary={t('drawerUi.drive')} />
 								</MenuItem>
 								<MenuItem onClick={(event) => handleMenu(event, 'settings')}>
 									<ListItemIcon><SettingsIcon /></ListItemIcon>

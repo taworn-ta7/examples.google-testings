@@ -88,8 +88,21 @@ router.get('/', [
 	// create or select user
 	const { user, created } = await userForExternalSignIn(info.email, info.name, info.locale);
 
-	// check if expiry login
-	let newToken = await newOrUpdateToken(user);
+	// copy tokens for later use
+	const now = new Date();
+	const expire = now.getTime() + +process.env.AUTHEN_TIMEOUT;
+	await db.transaction(async (t) => {
+		await user.update({
+			begin: now,
+			end: null,
+			expire: new Date(expire),
+			accessToken: token.access_token,
+		}, { transaction: t });
+		await user.accountToken.update({
+			token: token.id_token,
+			refreshToken: token.refresh_token,
+		}, { transaction: t });
+	});
 
 	// if just created and have profile
 	if (created && info.picture) {
@@ -122,28 +135,10 @@ router.get('/', [
 		}
 	}
 
-	// override token
-	newToken = user.accountToken.token = token.access_token;
-	await db.transaction(async (t) => {
-		await user.accountToken.update({
-			token: token.access_token,
-		}, { transaction: t });
-	});
-	logger.debug(`${req.id} final token: ${user.accountToken.token}`);
-	logger.debug(`${req.id} final token: ${newToken}`);
-
-	// insert log
-	await entities.Loggings.create({
-		userId: user.id,
-		action: 'update',
-		table: 'AccountUsers',
-		description: `User ${user.id} is sign-in from Google.`,
-	});
-
 	// success
 	res.ret = {
 		user: await entities.AccountUsers.findByPk(user.id),
-		token: newToken,
+		token: user.accountToken.token,
 	};
 	res.status(StatusCodes.OK).send(res.ret);
 	next();
