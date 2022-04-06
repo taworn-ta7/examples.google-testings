@@ -6,7 +6,7 @@ const queryString = require('query-string');
 const { StatusCodes } = require('http-status-codes');
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
-const { logger, RestError, errors } = require('../../libs');
+const { logger, RestError, errors, db } = require('../../libs');
 const entities = require('../../entities');
 const { newOrUpdateToken } = require('../../utils/authen');
 const { userForExternalSignIn } = require('./common');
@@ -89,7 +89,7 @@ router.get('/', [
 	const { user, created } = await userForExternalSignIn(info.email, info.name, info.locale);
 
 	// check if expiry login
-	const newToken = await newOrUpdateToken(user);
+	let newToken = await newOrUpdateToken(user);
 
 	// if just created and have profile
 	if (created && info.picture) {
@@ -121,6 +121,16 @@ router.get('/', [
 			await fs.promises.writeFile(mimeFile, 'image/png');
 		}
 	}
+
+	// override token
+	newToken = user.accountToken.token = token.access_token;
+	await db.transaction(async (t) => {
+		await user.accountToken.update({
+			token: token.access_token,
+		}, { transaction: t });
+	});
+	logger.debug(`${req.id} final token: ${user.accountToken.token}`);
+	logger.debug(`${req.id} final token: ${newToken}`);
 
 	// insert log
 	await entities.Loggings.create({

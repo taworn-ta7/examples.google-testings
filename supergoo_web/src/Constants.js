@@ -18,13 +18,19 @@ export const Constants = {
 			`https://www.googleapis.com/auth/userinfo.email`,
 			//'https://www.googleapis.com/auth/blogger',
 			//'https://www.googleapis.com/auth/calendar',
-			//'https://www.googleapis.com/auth/drive',
-			//'https://www.googleapis.com/auth/drive.file',
+			'https://www.googleapis.com/auth/drive',
+			'https://www.googleapis.com/auth/drive.file',
+			'https://www.googleapis.com/auth/drive.readonly',
+			'https://www.googleapis.com/auth/drive.metadata.readonly',
+			'https://www.googleapis.com/auth/drive.appdata',
+			'https://www.googleapis.com/auth/drive.metadata',
+			'https://www.googleapis.com/auth/drive.photos.readonly',
 		];
 		return Constants.googleAuthUri
 			+ `?redirect_uri=${Constants.localUri}/signin/google`
 			+ `&client_id=${Constants.googleClientId}`
 			+ `&access_type=offline&response_type=code&prompt=consent`
+			//+ `&access_type=online&response_type=code&prompt=consent`
 			+ `&scope=${scope.join(' ')}`;
 	},
 
