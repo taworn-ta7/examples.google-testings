@@ -83,6 +83,7 @@
 		"home": "Home",
 		"drive": "Drive",
 		"keep": "Keep",
+		"mail": "Mail",
 		"settings": "Settings",
 		"exit": "Exit"
 	},
@@ -111,6 +112,9 @@
 	},
 	"keepPage": {
 		"title": "Keep"
+	},
+	"mailPage": {
+		"title": "Mail"
 	},
 	"settingsPage": {
 		"title": "Settings",

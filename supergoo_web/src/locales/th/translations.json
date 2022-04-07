@@ -83,6 +83,7 @@
 		"home": "เริ่มต้น",
 		"drive": "ไดร์ฟ",
 		"keep": "คีป",
+		"mail": "เมล",
 		"settings": "การตั้งค่า",
 		"exit": "ออกจากระบบ"
 	},
@@ -111,6 +112,9 @@
 	},
 	"keepPage": {
 		"title": "คีป"
+	},
+	"mailPage": {
+		"title": "เมล"
 	},
 	"settingsPage": {
 		"title": "การตั้งค่า",

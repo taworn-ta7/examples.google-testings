@@ -26,6 +26,7 @@ import {
 	Home as HomeIcon,
 	AddToDrive as DriveIcon,
 	EventNote as KeepIcon,
+	Email as MailIcon,
 	Settings as SettingsIcon,
 	Face as FaceIcon,
 	DriveFileRenameOutline as NameIcon,
@@ -124,6 +125,9 @@ export default function PageHeader(props) {
 					break;
 				case 'keep':
 					navigate('/keep');
+					break;
+				case 'mail':
+					navigate('/mail');
 					break;
 				case 'settings':
 					navigate('/settings');
@@ -233,6 +237,10 @@ export default function PageHeader(props) {
 								<MenuItem onClick={(event) => handleMenu(event, 'keep')}>
 									<ListItemIcon><KeepIcon /></ListItemIcon>
 									<ListItemText primary={t('drawerUi.keep')} />
+								</MenuItem>
+								<MenuItem onClick={(event) => handleMenu(event, 'mail')}>
+									<ListItemIcon><MailIcon /></ListItemIcon>
+									<ListItemText primary={t('drawerUi.mail')} />
 								</MenuItem>
 								<MenuItem onClick={(event) => handleMenu(event, 'settings')}>
 									<ListItemIcon><SettingsIcon /></ListItemIcon>
