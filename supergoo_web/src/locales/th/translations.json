@@ -82,6 +82,7 @@
 		"title": "สวัสดี",
 		"home": "เริ่มต้น",
 		"drive": "ไดร์ฟ",
+		"keep": "คีป",
 		"settings": "การตั้งค่า",
 		"exit": "ออกจากระบบ"
 	},
@@ -107,6 +108,9 @@
 	},
 	"drivePage": {
 		"title": "ไดร์ฟ"
+	},
+	"keepPage": {
+		"title": "คีป"
 	},
 	"settingsPage": {
 		"title": "การตั้งค่า",

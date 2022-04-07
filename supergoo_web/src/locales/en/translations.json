@@ -82,6 +82,7 @@
 		"title": "Hello",
 		"home": "Home",
 		"drive": "Drive",
+		"keep": "Keep",
 		"settings": "Settings",
 		"exit": "Exit"
 	},
@@ -107,6 +108,9 @@
 	},
 	"drivePage": {
 		"title": "Drive"
+	},
+	"keepPage": {
+		"title": "Keep"
 	},
 	"settingsPage": {
 		"title": "Settings",

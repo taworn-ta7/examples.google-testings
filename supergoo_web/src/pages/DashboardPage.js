@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@mui/material';
-import Rest from '../components/Rest';
 import AppBox from '../layouts/AppBox';
 import Styles from '../Styles';
 import '../Styles.css';

@@ -8,14 +8,14 @@ import AppBox from '../layouts/AppBox';
 import Constants from '../Constants';
 import AppContext from '../AppContext';
 
-export default function DrivePage() {
+export default function KeepPage() {
 	const { t } = useTranslation();
 	const appContext = React.useContext(AppContext);
 	const item = appContext.login;
 
 	React.useEffect(() => {
-		//const uri = `https://www.googleapis.com/drive/v3/about?key=${Constants.googleApiKey}&fields=*`;
-		const uri = `https://www.googleapis.com/drive/v3/files?key=${Constants.googleApiKey}&corpora=user`;
+		//const uri = `https://keep.googleapis.com/$discovery/rest?version=v1`;
+		const uri = `https://keep.googleapis.com/v1/notes?key=${Constants.googleApiKey}`;
 		const options = {
 			method: 'GET',
 			headers: {
@@ -35,7 +35,7 @@ export default function DrivePage() {
 	}, [item]);
 
 	return (
-		<AppBox title={t('drivePage.title')} showMenu={true}>
+		<AppBox title={t('keepPage.title')} showMenu={true}>
 		</AppBox>
 	);
 }
