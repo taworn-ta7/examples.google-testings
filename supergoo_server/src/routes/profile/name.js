@@ -29,14 +29,6 @@ router.put('/name', [
 		name: json.name,
 	});
 
-	// insert log
-	await entities.Loggings.create({
-		userId: req.user.id,
-		action: 'update',
-		table: 'AccountUsers',
-		description: `User ${req.user.id} changed name.`,
-	});
-
 	// success
 	res.ret = {
 		user: await entities.AccountUsers.findByPk(req.user.id),

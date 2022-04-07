@@ -53,14 +53,6 @@ router.post('/icon', [
 	// move file
 	await fs.promises.rename(image.path, iconFile);
 
-	// insert log
-	await entities.Loggings.create({
-		userId: req.user.id,
-		action: 'update',
-		table: 'AccountUsers',
-		description: `User ${req.user.id} upload profile icon.`,
-	});
-
 	// success
 	res.ret = {
 		image: {
@@ -125,14 +117,6 @@ router.delete('/icon', [
 	}
 	catch (ex) {
 	}
-
-	// insert log
-	await entities.Loggings.create({
-		userId: req.user.id,
-		action: 'update',
-		table: 'AccountUsers',
-		description: `User ${req.user.id} delete profile icon.`,
-	});
 
 	// success
 	res.ret = {

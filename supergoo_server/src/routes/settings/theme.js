@@ -29,14 +29,6 @@ router.put('/theme', [
 		theme: json.theme,
 	});
 
-	// insert log
-	await entities.Loggings.create({
-		userId: req.user.id,
-		action: 'update',
-		table: 'AccountUsers',
-		description: `User ${req.user.id} changed theme.`,
-	});
-
 	// success
 	res.ret = {
 		user: await entities.AccountUsers.findByPk(req.user.id),
